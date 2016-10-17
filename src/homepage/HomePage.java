@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import insert.Insert;
+
 public class HomePage extends JFrame {
 	
 	/**
@@ -68,7 +70,13 @@ public class HomePage extends JFrame {
 			
 			switch(command) {
 				case "INSERT": {
-					
+					Thread thread = new Thread(new Insert());
+					thread.start();
+					try {
+						thread.join();
+					} catch (Exception exception) {
+						exception.printStackTrace();
+					}
 				} case "UPDATE": {
 					
 				} case "SELECT": {
