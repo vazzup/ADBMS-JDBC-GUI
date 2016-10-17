@@ -77,7 +77,8 @@ public class Insert extends JFrame implements Runnable{
 		
 		cancel.addActionListener(new ButtonClickListener(this));
 		insert.addActionListener(new ButtonClickListener(this));
-		
+		cancel.setActionCommand("CANCEL");
+		insert.setActionCommand("INSERT");
 	}
 	
 	private static class ButtonClickListener implements ActionListener {
@@ -109,7 +110,7 @@ public class Insert extends JFrame implements Runnable{
 							System.out.println("Please enter the details properly");
 							return;
 						}
-						rollNumber = Integer.parseInt(temporaryString);
+						rollNumber = Integer.parseInt(temporaryString.trim());
 						temporaryString=this.insert.nameText.getText();
 						if(temporaryString.equalsIgnoreCase("")) {
 							System.out.println("Please enter the details properly");
@@ -127,7 +128,7 @@ public class Insert extends JFrame implements Runnable{
 							System.out.println("Please enter the details properly");
 							return;
 						}
-						year = Integer.parseInt(temporaryString);
+						year = Integer.parseInt(temporaryString.trim());
 						String sql = "insert into student values(" + rollNumber + ", " + "\"" + name + "\", " + "\"" + departmentName + "\", " + year + ");";
 						try {
 							resultUpdate=statement.executeUpdate(sql);
@@ -144,6 +145,7 @@ public class Insert extends JFrame implements Runnable{
 						System.out.println("Invalid Command");
 					}
 				}
+				connection.close();
 			} catch (Exception exception) {
 				exception.printStackTrace();
 			}

@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import insert.Insert;
+import select.Select;
 
 public class HomePage extends JFrame {
 	
@@ -77,12 +78,20 @@ public class HomePage extends JFrame {
 					} catch (Exception exception) {
 						exception.printStackTrace();
 					}
+					break;
 				} case "UPDATE": {
-					
+					break;
 				} case "SELECT": {
-					
+					Thread thread = new Thread(new Select());
+					thread.start();
+					try {
+						thread.join();
+					} catch (Exception exception) {
+						exception.printStackTrace();
+					}
+					break;
 				} case "DELETE": {
-					
+					break;
 				}
 				default: {
 					System.out.println("Invalid Command");
