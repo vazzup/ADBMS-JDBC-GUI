@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import delete.Delete;
 import insert.Insert;
 import select.Select;
 
@@ -91,6 +92,13 @@ public class HomePage extends JFrame {
 					}
 					break;
 				} case "DELETE": {
+					Thread thread = new Thread(new Delete());
+					thread.start();
+					try {
+						thread.join();
+					} catch (Exception exception) {
+						exception.printStackTrace();
+					}
 					break;
 				}
 				default: {
