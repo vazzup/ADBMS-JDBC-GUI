@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import delete.Delete;
 import insert.Insert;
 import select.Select;
+import update.Update;
 
 public class HomePage extends JFrame {
 	
@@ -81,6 +82,13 @@ public class HomePage extends JFrame {
 					}
 					break;
 				} case "UPDATE": {
+					Thread thread = new Thread(new Update());
+					thread.start();
+					try {
+						thread.join();
+					} catch (Exception exception) {
+						exception.printStackTrace();
+					}
 					break;
 				} case "SELECT": {
 					Thread thread = new Thread(new Select());

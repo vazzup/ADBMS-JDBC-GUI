@@ -46,11 +46,11 @@ public class Delete extends JFrame implements Runnable {
 		this.value.setBounds(290, 90, 100, 20);
 		this.deleteButton.setBounds(50, 130, 100, 20);
 		
-		this.add(header);
-		this.add(dropDownMenu);
-		this.add(equalsTo);
-		this.add(value);
-		this.add(deleteButton);
+		this.add(this.header);
+		this.add(this.dropDownMenu);
+		this.add(this.equalsTo);
+		this.add(this.value);
+		this.add(this.deleteButton);
 		
 		this.deleteButton.setActionCommand("DELETE");
 		this.deleteButton.addActionListener(new ButtonClickListener(this));
@@ -111,6 +111,7 @@ public class Delete extends JFrame implements Runnable {
 						break;
 					}
 				}
+				this.delete.dispose();
 			} catch(Exception exception) {
 				System.out.println("Incorrect Query");
 			}
