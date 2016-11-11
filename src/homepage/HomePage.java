@@ -14,14 +14,19 @@ import update.Update;
 public class HomePage extends JFrame {
 	
 	/**
-	 * 
+	 * @author vazzup
+	 * Main Class
+	 * Has Four JButtons to call Windows for Insert, Select, Update and Delete Functions
 	 */
 	
 	private JButton insert, select, update, delete;
 	private static final long serialVersionUID = 1L;
 
-	HomePage() {
+	public HomePage() {
 		
+		/*
+		 * Default Public Constructor
+		 */
 		this.setSize(660, 280);
 		
 		this.prepareButtons();
@@ -33,21 +38,30 @@ public class HomePage extends JFrame {
 	
 	public void prepareButtons() {
 
+		/*
+		 * Function to prepare and add components to GUI
+		 * Seperated from run(), and constructor so as to keep it clean
+		 */
+		
+		//Initialize Components
 		this.insert=new JButton("Insert");
 		this.select=new JButton("Select");
 		this.update=new JButton("Update");
 		this.delete=new JButton("Delete");
 		
+		//Place Components in JFrame
 		this.insert.setBounds(100, 100, 100, 20);
 		this.select.setBounds(220, 100, 100, 20);
 		this.update.setBounds(340, 100, 100, 20);
 		this.delete.setBounds(460, 100, 100, 20);
 		
+		//Add Components to JFrame
 		this.add(this.insert);
 		this.add(this.select);
 		this.add(this.update);
 		this.add(this.delete);
 		
+		//Set Button Click Listener
 		this.insert.setActionCommand("INSERT");
 		this.select.setActionCommand("SELECT");
 		this.delete.setActionCommand("DELETE");
@@ -61,12 +75,18 @@ public class HomePage extends JFrame {
 	}
 	
 	public static void main(String args[]) {
+		
+		// Main Function
 		HomePage homePage = new HomePage();
 		homePage.setVisible(true);
 	}
 	
 	private class ButtonClickListener implements ActionListener {
 
+		/**
+		 * Class that listens for button clicks and takes appropriate action
+		 */
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();

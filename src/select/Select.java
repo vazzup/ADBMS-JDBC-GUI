@@ -14,16 +14,30 @@ import javax.swing.JLabel;
 
 public class Select extends JFrame implements Runnable {
 
+	/**
+	 * @author vazzup
+	 * This is the Select JFrame
+	 * It is a runnable and is called by a thread in HomePage.java
+	 * It uses Four JCheckBoxes to let user select which fields to show
+	 * It uses a JLabel to print result of Query
+	 */
+	
 	JCheckBox rollNumberBox, nameBox, departmentBox, yearBox;
 	JButton search;
 	JLabel displayLabel;
 	
 	@Override
 	public void run() {
+		//Called when Thread starts
 		this.setVisible(true);
 	}
 	
 	public Select () {
+		
+		/* 
+		 * Default Public Constructor
+		 * Size set randomly
+		 */
 		this.setSize(500, 500);
 		this.setLayout(null);
 		this.prepareComponents();
@@ -31,6 +45,12 @@ public class Select extends JFrame implements Runnable {
 	
 	public void prepareComponents() {
 		
+		/*
+		 * Function to prepare and add components to GUI
+		 * Seperated from run(), and constructor so as to keep it clean
+		 */
+		
+		//Initialize components
 		this.rollNumberBox=new JCheckBox("Roll Number");
 		this.nameBox=new JCheckBox("Name");
 		this.departmentBox=new JCheckBox("Department");
@@ -38,6 +58,7 @@ public class Select extends JFrame implements Runnable {
 		this.search=new JButton("Search");
 		this.displayLabel=new JLabel();
 		
+		//Place Components in JFrame
 		this.rollNumberBox.setBounds(50, 50, 200, 20);
 		this.nameBox.setBounds(50, 90, 200, 20);
 		this.departmentBox.setBounds(50, 130, 200, 20);
@@ -45,6 +66,7 @@ public class Select extends JFrame implements Runnable {
 		this.search.setBounds(50, 220, 100, 20);
 		this.displayLabel.setBounds(50, 250, 400, 200);
 		
+		//Add Components to JFrame
 		this.add(rollNumberBox);
 		this.add(nameBox);
 		this.add(departmentBox);
@@ -52,12 +74,18 @@ public class Select extends JFrame implements Runnable {
 		this.add(search);
 		this.add(displayLabel);
 		
+		//Set Button Click Listener
 		this.search.addActionListener(new ButtonClickListener(this));
 		this.search.setActionCommand("SEARCH");
 	}
 	
 	private class ButtonClickListener implements ActionListener {
 
+		/**
+		 * @params Select select
+		 * Class that listens for button clicks and takes appropriate action
+		 */
+		
 		Select select;
 		
 		public ButtonClickListener(Select select) {

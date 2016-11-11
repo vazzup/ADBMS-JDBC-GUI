@@ -15,28 +15,47 @@ import javax.swing.JTextField;
 
 public class Insert extends JFrame implements Runnable{
 
+	/**
+	 * @author vazzup
+	 * This is the Select JFrame
+	 * It is a runnable and is called by a thread in HomePage.java
+	 * It uses Four JTextFields to let user fill in details of insertion
+	 */
+	
 	private JTextField rollNumberText, nameText, departmentText, yearText;
 	private JLabel rollNumberLabel, nameLabel, departmentLabel, yearLabel;
 	private JButton cancel, insert;
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		
+		//called when Thread starts
 		this.setVisible(true);
 	}
 	
 	public Insert() {
 		
-		this.setSize(1000, 1000);
+		/* 
+		 * Default Public Constructor
+		 * Size set randomly
+		 */
 		
+		this.setSize(1000, 1000);
 		this.prepareComponents();
 		
 	}
 	
 	public void prepareComponents () {
 		
+		/*
+		 * Function to prepare and add components to GUI
+		 * Seperated from run(), and constructor so as to keep it clean
+		 */
+
+		//Set layout to null
 		this.setLayout(null);
 		
+		//Initialize components	
 		this.cancel=new JButton("CANCEL");
 		this.insert=new JButton("INSERT");
 		
@@ -49,9 +68,8 @@ public class Insert extends JFrame implements Runnable{
 		this.nameLabel=new JLabel("Name:");
 		this.departmentLabel=new JLabel("Department:");
 		this.yearLabel=new JLabel("Year:");
-		//this.rollNumberLabel.setOpaque(true);
-		//this.rollNumberLabel.setBackground(Color.BLACK);
 		
+		//Place in JFrame
 		this.rollNumberLabel.setBounds(50, 50, 100, 20);
 		this.rollNumberText.setBounds(170, 50, 200, 20);
 		this.nameLabel.setBounds(50, 90, 100, 20);
@@ -60,10 +78,10 @@ public class Insert extends JFrame implements Runnable{
 		this.departmentText.setBounds(170, 130, 200, 20);
 		this.yearLabel.setBounds(50, 170, 100, 20);
 		this.yearText.setBounds(170, 170, 200, 20);
-		
 		this.cancel.setBounds(50, 220, 100, 20);
 		this.insert.setBounds(170, 220, 100, 20);
 		
+		//Add Components to JFrame
 		this.add(this.rollNumberLabel);
 		this.add(this.nameLabel);
 		this.add(this.departmentLabel);
@@ -75,6 +93,7 @@ public class Insert extends JFrame implements Runnable{
 		this.add(this.cancel);
 		this.add(this.insert);
 		
+		//set Button Click Listeners
 		cancel.addActionListener(new ButtonClickListener(this));
 		insert.addActionListener(new ButtonClickListener(this));
 		cancel.setActionCommand("CANCEL");
@@ -83,6 +102,11 @@ public class Insert extends JFrame implements Runnable{
 	
 	private static class ButtonClickListener implements ActionListener {
 
+		/**
+		 * @params Insert insert
+		 * Class that listens for button clicks and takes appropriate action
+		 */
+		
 		private Insert insert;
 		
 		public ButtonClickListener(Insert insert) {

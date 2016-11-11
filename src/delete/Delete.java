@@ -14,17 +14,31 @@ import javax.swing.JTextField;
 
 public class Delete extends JFrame implements Runnable {
 
+	/**
+	 * @author vazzup
+	 * This is the Select JFrame
+	 * It is a runnable and is called by a thread in HomePage.java
+	 * It uses a JComboBoxes to let user select which fields to delete using
+	 * It uses a JTextField to let user select which value of selected field to delete
+	 */
+	
 	JComboBox dropDownMenu;
 	JLabel header, equalsTo;
 	JTextField value;
 	JButton deleteButton;
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		// Called when Thread calls start
 		this.setVisible(true);
 	}
 	
 	public Delete() {
+		
+		/*
+		 * Default Public Constructor
+		 * Size set randomly
+		 */
+		
 		this.setSize(700, 500);
 		this.setLayout(null);
 		this.prepareComponents();
@@ -33,6 +47,12 @@ public class Delete extends JFrame implements Runnable {
 	
 	public void prepareComponents() {
 		
+		/*
+		 * Function to prepare and add components to GUI
+		 * Seperated from run(), and constructor so as to keep it clean
+		 */
+		
+		//Initialize Components
 		String dropDownContent[] = {"Roll Number", "Name", "Department", "Year"};
 		this.dropDownMenu=new JComboBox(dropDownContent);
 		this.header=new JLabel("Delete * where");
@@ -40,24 +60,33 @@ public class Delete extends JFrame implements Runnable {
 		this.value=new JTextField();
 		this.deleteButton=new JButton("DELETE");
 		
+		//Place Components in JFrame
 		this.header.setBounds(50, 50, 400, 20);
 		this.dropDownMenu.setBounds(50, 90, 100, 20);
 		this.equalsTo.setBounds(170, 90, 100, 20);
 		this.value.setBounds(290, 90, 100, 20);
 		this.deleteButton.setBounds(50, 130, 100, 20);
 		
+		//Add Components to JFrame
 		this.add(this.header);
 		this.add(this.dropDownMenu);
 		this.add(this.equalsTo);
 		this.add(this.value);
 		this.add(this.deleteButton);
 		
+		//Set Button Click Listener
 		this.deleteButton.setActionCommand("DELETE");
 		this.deleteButton.addActionListener(new ButtonClickListener(this));
 		
 	}
 	
 	private class ButtonClickListener implements ActionListener {
+		
+		
+		/**
+		 * @params Delete delete
+		 * Class that listens for button clicks and takes appropriate action
+		 */
 		
 		Delete delete;
 		public ButtonClickListener(Delete delete) {
